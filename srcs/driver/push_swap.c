@@ -10,33 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs.h"
-#include "libft.h"
-#include "struct.h"
-#include "stack.h"
-#include "validate.h"
-#include "utils.h"
+#include "push_swap.h"
 
-int	main(int ac, char **av)
+void	push_swap(t_stack *stack)
 {
-	t_vars	*vars;
-	t_stack	*stack;
+	sort(stack);
+}
 
-	if (ac > 1)
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+
+	if (argc > 1)
 	{
-		vars = (t_vars *)malloc(sizeof(t_vars));
-		if (vars == NULL)
-			exit_prog(EXIT_FAILURE, NULL, NULL);
-		if (!is_valid_args(ac, av, vars))
-			exit_prog(EXIT_FAILURE, vars, NULL);
-		stack = new_stack();
-		fill(stack, vars->split);
-		print_initial_stack(stack);
-		ft_putstrnl("\n\e[4mOperations\e[m:");
-		sort(stack);
-		ft_putstrnl("\n\e[4mFinal stack\e[m:");
-		print_stack(stack);
-		exit_prog(EXIT_SUCCESS, vars, stack);
+		a = new_stack();
+		parse(argv + 1, a);
+		push_swap(a);
+		destroy_stack(a);
 	}
 	return (0);
 }

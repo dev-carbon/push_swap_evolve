@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_max_pos.c                                      :+:      :+:    :+:   */
+/*   display_result.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/10 12:37:46 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/10 12:37:48 by humanfou         ###   ########.fr       */
+/*   Created: 2021/10/07 04:55:25 by humanfou          #+#    #+#             */
+/*   Updated: 2021/10/07 04:55:26 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include "libs.h"
+#include "helpers.h"
 
-int	get_max_pos(t_stack *stack)
+void	display_result(t_stack *a, t_stack *b)
 {
-	int			i;
-	int			pos;
-	int			max;
-	t_element	*el;
-
-	i = 1;
-	pos = 1;
-	el = stack->elements;
-	max = el->value;
-	while (el != NULL)
-	{
-		if (max < el->value)
-		{
-			max = el->value;
-			pos = i;
-		}
-		i++;
-		el = el->next;
-	}
-	return (pos);
+	if (is_empty(b) && is_sorted(a))
+		ft_putendl_fd("\33[32mOK\33[0m\n", STDOUT_FILENO);
+	else
+		ft_putendl_fd("\33[31mKO\33[0m\n", STDOUT_FILENO);
 }

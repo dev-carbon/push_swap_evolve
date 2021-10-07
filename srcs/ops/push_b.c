@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "ops.h"
-#include "libft.h"
-#include "stack.h"
 
 void	push_b(t_stack *stack_b, t_stack *stack_a)
 {

@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_vars.c                                     :+:      :+:    :+:   */
+/*   display_debug_data.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 18:10:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/08 18:10:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/10/07 02:15:15 by humanfou          #+#    #+#             */
+/*   Updated: 2021/10/07 02:15:24 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs.h"
-#include "utils.h"
+#include "helpers.h"
 
-void	destroy_vars(t_vars *vars)
+void	display_debug_data(t_stack *a, t_stack *b, int count)
 {
-	int	i;
-
-	if (vars != NULL)
-	{
-		if (vars->split != NULL)
-		{
-			i = 0;
-			while (vars->split[i] != NULL)
-			{
-				free(vars->split[i]);
-				vars->split[i] = NULL;
-				i++;
-			}
-			free(vars->split);
-			vars->split = NULL;
-		}
-		free(vars);
-		vars = NULL;
-	}
+	display_stacks(a, b);
+	ft_putstr("\33[4mcount:\33[0m ");
+	ft_putnbr(count);
+	ft_putstr("\n\n");
+	ft_putstr("\33[4mExec:\33[0m ");
 }

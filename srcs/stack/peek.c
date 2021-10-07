@@ -10,13 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs.h"
-#include "utils.h"
 #include "stack.h"
 
 int	peek(t_stack *stack)
 {
 	if (!is_empty(stack))
-		return (stack->elements->value);
+		return (stack->items->value);
 	return (INT_MIN);
 }

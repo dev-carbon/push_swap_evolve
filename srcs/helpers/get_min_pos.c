@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_stack.c                                    :+:      :+:    :+:   */
+/*   get_min_pos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/08 17:59:51 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/08 18:03:32 by humanfou         ###   ########.fr       */
+/*   Created: 2021/06/10 13:01:12 by humanfou          #+#    #+#             */
+/*   Updated: 2021/06/10 13:01:14 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
-#include "libs.h"
+#include "helpers.h"
 
-void	destroy_stack(t_stack *stack)
+int	get_min_pos(t_stack *stack)
 {
-	t_element	*el;
-	t_element	*current;
+	int		i;
+	int		pos;
+	int		min;
+	t_items	*items;
 
-	if (stack != NULL)
+	i = 1;
+	pos = 1;
+	items = stack->items;
+	min = items->value;
+	while (items != NULL)
 	{
-		el = stack->elements;
-		while (el)
+		if (min > items->value)
 		{
-			current = el;
-			el = el->next;
-			free(current);
-			current = NULL;
+			min = items->value;
+			pos = i;
 		}
-		free(stack);
-		stack = NULL;
+		i++;
+		items = items->next;
 	}
+	return (pos);
 }

@@ -10,14 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs.h"
 #include "validate.h"
-#include "libft.h"
 
-int	is_valid_int(char *str)
+int	is_valid_int(char *str, long int nbr)
 {
 	int			i;
-	long int	nbr;
 
 	i = -1;
 	if (ft_issign(str[0]))
@@ -25,7 +22,6 @@ int	is_valid_int(char *str)
 	while (str[++i] != '\0')
 		if (!ft_isdigit(str[i]))
 			return (0);
-	nbr = ft_atoi(str);
 	if (nbr < INT_MIN || nbr > INT_MAX)
 		return (0);
 	return (1);

@@ -10,17 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
+RED = \33[31m
+GREEN = \33[32m
+YELLOW = \33[33m
+BLUE = \33[34m
+RESET = \33[0m
+
 NAME = libft.a
 
 CC = clang
 
 CCFLAGS = -Wall -Werror -Wextra
 
-LIB = ar rc
-
 SRCS = get_next_line.c \
 	ft_issign.c \
-	ft_print_split.c \
+	ft_display_split.c \
 	ft_swap.c \
 	ft_putstrnl.c \
 	ft_strncpy.c \
@@ -78,9 +82,8 @@ SRCS = get_next_line.c \
 	ft_putnbr_fd.c \
 	ft_putnbr.c \
 	ft_putnbrmax_fd.c \
-	ft_putnbrumax_fd.c 
-
-BONUS = ft_lstnew.c \
+	ft_putnbrumax_fd.c \
+	ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
@@ -92,25 +95,21 @@ BONUS = ft_lstnew.c \
 
 OBJ = $(SRCS:.c=.o)
 
-OBJ_BONUS = $(BONUS:.c=.o)
-
-all: bonus
-
-bonus: $(OBJ) $(OBJ_BONUS)
-	@$(LIB) $(NAME) $^
-	@echo "${NAME} created."
+all: $(OBJ)
+	@ar rc $(NAME) $^
+	@echo "$(GREEN)$(NAME) created.$(RESET)"
 
 $(NAME):
 	@$(CC) $(CFLAGS) -c $(SRCS)
 	@$(LIB) $(NAME) $(OBJ)
 
 clean:
-	@/bin/rm -rf $(OBJ) $(OBJ_BONUS)
-	@echo "Cleaned libft object files."
+	@rm -rf $(OBJ) $(OBJ_BONUS)
+	@echo "$(RED)$(NAME) object files removed.$(RESET)"
 
-fclean: clean
-	@/bin/rm -f $(NAME)
-	@echo "${NAME} removed."
+fclean:
+	@rm -rf $(OBJ) $(NAME)
+	@echo "$(RED)$(NAME) and object files removed.$(RESET)"
 
 re: fclean all
 

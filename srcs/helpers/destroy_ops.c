@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   destroy_ops.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/06 08:51:29 by humanfou          #+#    #+#             */
-/*   Updated: 2021/10/06 08:51:55 by humanfou         ###   ########.fr       */
+/*   Created: 2021/10/07 04:13:44 by humanfou          #+#    #+#             */
+/*   Updated: 2021/10/07 04:13:48 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "helpers.h"
 
-typedef struct s_items
+void	destroy_ops(t_operation **ops)
 {
-	int				value;
-	struct s_items	*next;
-}	t_items;
+	t_operation	*buff;
+	t_operation	*current;
 
-typedef struct s_operation
-{
-	char				*label;
-	int					len;
-	struct s_operation	*next;
-}	t_operation;
-
-typedef struct s_stack
-{
-	int		size;
-	t_items	*items;
-}	t_stack;
-
-#endif
+	buff = *ops;
+	while (buff != NULL)
+	{
+		current = buff;
+		buff = buff->next;
+		free(current->label);
+		free(current);
+		current = NULL;
+	}
+	*ops = NULL;
+}

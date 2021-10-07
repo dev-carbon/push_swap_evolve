@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_split.c                                   :+:      :+:    :+:   */
+/*   ft_display_split.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 16:24:36 by humanfou          #+#    #+#             */
-/*   Updated: 2021/05/04 21:38:14 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/10/07 06:18:25 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_split(char **split)
+void	ft_display_split(char **split)
 {
 	while (*split)
 		ft_putstrnl(*split++);

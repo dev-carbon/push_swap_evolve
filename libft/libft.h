@@ -22,11 +22,11 @@
 # define BUFFER_SIZE	1
 
 int					ft_issign(char c);
-void				ft_print_split(char **split);
+void				ft_display_split(char **split);
 void				ft_putstrnl(char *str);
 void				ft_swap(int *a, int *b);
 char				*strncpy(char *dest, const char *src, size_t n);
-char				*ft_nbr_to_string(int	nbr);
+char				*ft_nbr_to_string(int nbr);
 int					ft_split_len(char **split);
 char				*ft_strremove_spaces(char *str);
 int					ft_min(int a, int b);

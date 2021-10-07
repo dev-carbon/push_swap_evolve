@@ -11,19 +11,17 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include "libs.h"
-#include "utils.h"
 
 int	is_sorted(t_stack *stack)
 {
-	t_element	*el;
+	t_items	*items;
 
-	el = stack->elements;
-	while (el->next != NULL)
+	items = stack->items;
+	while (items->next != NULL)
 	{
-		if (el->value > el->next->value)
+		if (items->value > items->next->value)
 			return (0);
-		el = el->next;
+		items = items->next;
 	}
 	return (1);
 }

@@ -28,7 +28,7 @@ static char	*strnew(size_t size)
 
 static int	get_line_len(char *hold)
 {
-	int				i;
+	int	i;
 
 	i = 0;
 	while (hold[i] != '\0' && hold[i] != '\n')
@@ -38,7 +38,7 @@ static int	get_line_len(char *hold)
 
 static char	*get_line(char *line, char **hold)
 {
-	char			*tmp;
+	char	*tmp;
 
 	if (*hold == NULL)
 		line = strnew(0);
@@ -48,8 +48,9 @@ static char	*get_line(char *line, char **hold)
 		if (!line)
 			return (NULL);
 		tmp = *hold;
-		*hold = ft_substr(tmp, get_line_len(tmp) + 1, ft_strlen(tmp));
-		if (!*hold)
+		*hold = ft_substr(tmp, get_line_len(tmp) + 1,
+				ft_strlen(tmp) - ft_strlen(line));
+		if (!(*hold))
 			return (NULL);
 		free(tmp);
 	}
@@ -64,11 +65,11 @@ static char	*get_line(char *line, char **hold)
 	return (line);
 }
 
-static int	get_return(int rb, char *line, char *hold)
+static int	get_return_val(int rb, char **line, char *hold)
 {
-	if ((rb == -1) || (!(*line)))
+	if (rb == -1 || !(*line))
 		return (-1);
-	if (!hold)
+	if (!(hold))
 		return (0);
 	return (1);
 }
@@ -83,19 +84,19 @@ int	get_next_line(const int fd, char **line)
 	if (fd == -1 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	rb = 0;
-	while (!ft_strchr(hold, '\n'))
+	while (!(ft_strchr(hold, '\n')))
 	{
 		rb = read(fd, data, BUFFER_SIZE);
-		if (rb < 0)
+		if (rb <= 0)
 			break ;
 		data[rb] = '\0';
 		tmp = hold;
-		if (tmp != NULL)
+		if (tmp)
 			hold = ft_strjoin(tmp, data);
 		else
 			hold = ft_strdup(data);
 		free(tmp);
 	}
 	*line = get_line(*line, &hold);
-	return (get_return(rb, *line, hold));
+	return (get_return_val(rb, line, hold));
 }

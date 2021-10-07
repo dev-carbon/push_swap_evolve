@@ -10,18 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs.h"
-#include "utils.h"
 #include "stack.h"
 
 t_stack	*pop(t_stack *stack)
 {
-	t_element	*top;
+	t_items	*top;
 
 	if (!is_empty(stack))
 	{
-		top = stack->elements;
-		stack->elements = stack->elements->next;
+		top = stack->items;
+		stack->items = stack->items->next;
 		stack->size -= 1;
 		free(top);
 		top = NULL;

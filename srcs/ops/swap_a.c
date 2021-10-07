@@ -11,12 +11,10 @@
 /* ************************************************************************** */
 
 #include "ops.h"
-#include "libft.h"
-#include "stack.h"
 
 void	swap_a(t_stack *stack)
 {
-	if (stack->elements->value > stack->elements->next->value)
+	if (stack->items->value > stack->items->next->value)
 	{
 		ft_putstrnl("sa");
 		swap(stack);

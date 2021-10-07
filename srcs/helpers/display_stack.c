@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_stack.c                                      :+:      :+:    :+:   */
+/*   display_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 22:01:20 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/06 22:01:22 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/10/07 06:32:53 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
-#include "libs.h"
-#include "libft.h"
+#include "helpers.h"
 
-void	print_stack(t_stack *stack)
+void	display_stack(t_stack *stack)
 {
-	t_element	*el;
+	t_items	*items;
 
-	el = stack->elements;
-	while (el)
+	items = stack->items;
+	while (items)
 	{
-		ft_putnbr(el->value);
-		write(1, "\n", 1);
-		el = el->next;
+		printf("% 15d |\n", items->value);
+		items = items->next;
 	}
-	write(1, "\n", 1);
+	printf("________________ _______________\n");
+	printf("         stack a stack b\n\n");
 }

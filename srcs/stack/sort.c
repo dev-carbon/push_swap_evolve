@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include "libs.h"
-#include "utils.h"
-#include "libft.h"
-#include "ops.h"
 
 t_stack	*sort(t_stack *sa)
 {

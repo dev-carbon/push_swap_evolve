@@ -10,29 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs.h"
-#include "struct.h"
 #include "validate.h"
-#include "utils.h"
-#include "libft.h"
 
-int	is_valid_args(int ac, char **av, t_vars *vars)
+int	is_valid_args(int ac, char **av)
 {
-	int	i;
-	int	j;
+	char	**split;
+	int		i;
+	int		j;
 
-	if (ac > 2)
+	if (ac == 1)
 		return (0);
-	i = -1;
-	vars->split = ft_split(av[1], 32);
-	while (vars->split[++i])
+	while (*av != NULL)
 	{
-		if (!is_valid_int(vars->split[i]))
-			return (0);
-		j = i;
-		while (vars->split[++j])
-			if (ft_atoi(vars->split[j]) == ft_atoi(vars->split[i]))
+		i = -1;
+		split = ft_split(*av++, 0x20);
+		while (split[++i])
+		{
+			if (!is_valid_int(split[i]))
 				return (0);
+			j = i;
+			while (split[++j])
+				if (ft_atoi(split[j]) == ft_atoi(split[i]))
+					return (0);
+		}
 	}
 	return (1);
 }

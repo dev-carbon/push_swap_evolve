@@ -13,7 +13,7 @@
 #ifndef OPS_H
 # define OPS_H
 
-# include "struct.h"
+# include "push_swap.h"
 
 void	swap_a(t_stack *stack);
 void	push_a(t_stack *stack_a, t_stack *stack_b);

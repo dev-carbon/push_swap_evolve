@@ -13,9 +13,10 @@
 #ifndef VALIDATE_H
 # define VALIDATE_H
 
-# include "struct.h"
+# include "push_swap.h"
 
-int	is_valid_args(int ac, char **av, t_vars *vars);
-int	is_valid_int(char *str);
+int	is_valid_args(int ac, char **av);
+int	is_valid_int(char *str, long int nbr);
+int	is_valid_operation(char *label);
 
 #endif

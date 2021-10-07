@@ -11,21 +11,19 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include "libs.h"
-#include "utils.h"
 
 t_stack	*push(t_stack *stack, int nbr)
 {
-	t_element	*new;
-	t_element	*head;
+	t_items	*new;
+	t_items	*head;
 
-	head = stack->elements;
-	new = (t_element *)malloc(sizeof(t_element));
+	head = stack->items;
+	new = (t_items *)malloc(sizeof(t_items));
 	if (new == NULL)
-		exit_prog(EXIT_FAILURE, NULL, NULL);
+		escape(EXIT_FAILURE);
 	stack->size += 1;
 	new->value = nbr;
 	new->next = head;
-	stack->elements = new;
+	stack->items = new;
 	return (stack);
 }

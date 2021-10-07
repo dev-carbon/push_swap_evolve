@@ -11,18 +11,19 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include "libs.h"
-#include "libft.h"
 
 t_stack	*rotate(t_stack *stack)
 {
-	t_element	*el;
+	t_items	*items;
 
-	el = stack->elements;
-	while (el->next != NULL)
+	items = stack->items;
+	if (items != NULL)
 	{
-		ft_swap(&el->value, &el->next->value);
-		el = el->next;
+		while (items->next != NULL)
+		{
+			ft_swap(&items->value, &items->next->value);
+			items = items->next;
+		}
 	}
 	return (stack);
 }

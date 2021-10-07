@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_min_pos.c                                      :+:      :+:    :+:   */
+/*   destroy_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/10 13:01:12 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/10 13:01:14 by humanfou         ###   ########.fr       */
+/*   Created: 2021/10/06 22:53:01 by humanfou          #+#    #+#             */
+/*   Updated: 2021/10/06 22:53:03 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
-#include "libs.h"
+#include "helpers.h"
 
-int	get_min_pos(t_stack *stack)
+void	destroy_split(char **split)
 {
-	int			i;
-	int			pos;
-	int			min;
-	t_element	*el;
+	int	i;
 
-	i = 1;
-	pos = 1;
-	el = stack->elements;
-	min = el->value;
-	while (el != NULL)
+	if (split != NULL)
 	{
-		if (min > el->value)
+		i = 0;
+		while (split[i] != NULL)
 		{
-			min = el->value;
-			pos = i;
+			free(split[i]);
+			split[i] = NULL;
+			i++;
 		}
-		i++;
-		el = el->next;
+		free(split);
+		split = NULL;
 	}
-	return (pos);
 }

@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_initial_stack.c                              :+:      :+:    :+:   */
+/*   get_max_pos.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 14:48:33 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/11 14:48:34 by humanfou         ###   ########.fr       */
+/*   Created: 2021/06/10 12:37:46 by humanfou          #+#    #+#             */
+/*   Updated: 2021/06/10 12:37:48 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
-#include "libs.h"
-#include "libft.h"
+#include "helpers.h"
 
-void	print_initial_stack(t_stack *stack)
+int	get_max_pos(t_stack *stack)
 {
-	t_element	*el;
+	int		i;
+	int		pos;
+	int		max;
+	t_items	*items;
 
-	el = stack->elements;
-	ft_putstrnl("\e[4mInitial stack\e[m:");
-	while (el)
+	i = 1;
+	pos = 1;
+	items = stack->items;
+	max = items->value;
+	while (items != NULL)
 	{
-		ft_putnbr(el->value);
-		write(1, "\n", 1);
-		el = el->next;
+		if (max < items->value)
+		{
+			max = items->value;
+			pos = i;
+		}
+		i++;
+		items = items->next;
 	}
-	write(1, "\n", 1);
+	return (pos);
 }

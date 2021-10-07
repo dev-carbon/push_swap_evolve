@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs.h"
 #include "stack.h"
 
 t_stack	*new_stack(void)
@@ -19,6 +18,6 @@ t_stack	*new_stack(void)
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	stack->size = 0;
-	stack->elements = NULL;
+	stack->items = NULL;
 	return (stack);
 }

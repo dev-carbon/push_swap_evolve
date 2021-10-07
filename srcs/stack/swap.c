@@ -11,13 +11,12 @@
 /* ************************************************************************** */
 
 #include "stack.h"
-#include "libft.h"
 
 t_stack	*swap(t_stack *stack)
 {
-	t_element	*el;
+	t_items	*items;
 
-	el = stack->elements;
-	ft_swap(&el->value, &el->next->value);
+	items = stack->items;
+	ft_swap(&items->value, &items->next->value);
 	return (stack);
 }

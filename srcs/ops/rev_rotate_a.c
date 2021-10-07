@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "ops.h"
-#include "libft.h"
-#include "stack.h"
-#include "utils.h"
 
 void	rev_rotate_a(t_stack *stack)
 {

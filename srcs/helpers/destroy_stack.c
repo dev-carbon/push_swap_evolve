@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_prog.c                                        :+:      :+:    :+:   */
+/*   destroy_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/04 16:34:40 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/04 16:46:51 by humanfou         ###   ########.fr       */
+/*   Created: 2021/06/08 17:59:51 by humanfou          #+#    #+#             */
+/*   Updated: 2021/06/08 18:03:32 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs.h"
-#include "struct.h"
-#include "utils.h"
-#include "libft.h"
+#include "helpers.h"
 
-int	exit_prog(int status, t_vars *vars, t_stack *stack)
+void	destroy_stack(t_stack *stack)
 {
-	if (status == EXIT_FAILURE)
-		write(STDERR_FILENO, "Error\n", 6);
-	if (status == EXIT_SUCCESS)
-		write(STDOUT_FILENO, "Bye!\n", 5);
-	destroy_vars(vars);
-	destroy_stack(stack);
-	exit(status);
-	return (0);
+	if (stack != NULL)
+	{
+		destroy_items(stack->items);
+		free(stack);
+		stack = NULL;
+	}
 }

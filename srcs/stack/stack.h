@@ -13,10 +13,9 @@
 #ifndef STACK_H
 # define STACK_H
 
-# include "struct.h"
+# include "push_swap.h"
 
 t_stack	*new_stack(void);
-t_stack	*fill(t_stack *stack, char **list);
 t_stack	*push(t_stack *stack, int nbr);
 t_stack	*pop(t_stack *stack);
 t_stack	*swap(t_stack *stack);
