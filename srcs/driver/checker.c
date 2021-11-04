@@ -47,17 +47,6 @@ static void	do_ops(t_stack *a, t_stack *b, t_operation *operations)
 	}
 }
 
-// static t_vars	*free_ops(t_vars *vars)
-// {
-// 	free(vars->ops->action->label);
-// 	vars->ops->action->label = NULL;
-// 	free(vars->ops->action);
-// 	vars->ops->action = NULL;
-// 	free(vars->ops);
-// 	vars->ops = NULL;
-// 	return (vars);
-// }
-
 static int	checker(t_stack *a)
 {
 	int				count;
@@ -92,7 +81,7 @@ int	main(int argc, char **argv)
 	{
 		stack = new_stack();
 		parse(argv + 1, stack);
-		display_stack(stack);
+		// display_stack(stack);
 		checker(stack);
 		destroy_stack(stack);
 	}

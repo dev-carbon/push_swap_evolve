@@ -42,7 +42,7 @@ void	display_right(t_stack *a, t_stack *b)
 
 	ia = a->items;
 	ib = b->items;
-	if (a->size < b->size)
+	if (a->size <= b->size)
 	{
 		while (ia)
 		{

@@ -14,9 +14,9 @@
 
 void	push_n_swap_a(t_stack *stack_a, t_stack *stack_b)
 {
-	while (!is_empty(stack_a) && peek(stack_a) < peek(stack_b))
+	while (!is_empty(stack_b) && stack_a->top < stack_b->top)
 	{
-		ft_putstrnl("pa");
+		write(STDOUT_FILENO, PUSH_A, 3);
 		push(stack_a, peek(stack_b));
 		pop(stack_b);
 		ft_putstrnl("sa");

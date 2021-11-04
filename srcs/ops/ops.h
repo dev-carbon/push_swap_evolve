@@ -15,11 +15,10 @@
 
 # include "push_swap.h"
 
-void	swap_a(t_stack *stack);
-void	push_a(t_stack *stack_a, t_stack *stack_b);
-void	push_n_swap_a(t_stack *stack_a, t_stack *stack_b);
-void	push_b(t_stack *stack_b, t_stack *stack_a);
-void	rotate_a(t_stack *stack);
-void	rev_rotate_a(t_stack *stack);
+void	swap_stack(t_stack *stack, char *label);
+void	push_stack(t_stack *dst, t_stack *src, char *label);
+void	rev_rotate_stack(t_stack *stack, char *label);
+void	rotate_stack(t_stack *stack, char *label);
+void	push_n_swap_stack(t_stack *dst, t_stack *src);
 
 #endif

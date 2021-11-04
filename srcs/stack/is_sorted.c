@@ -12,16 +12,21 @@
 
 #include "stack.h"
 
-int	is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack, int order)
 {
 	t_items	*items;
 
 	items = stack->items;
-	while (items->next != NULL)
+	if (!is_empty(stack))
 	{
-		if (items->value > items->next->value)
-			return (0);
-		items = items->next;
+		while (items->next != NULL)
+		{
+			if (items->value > items->next->value && order == ASC)
+				return (0);
+			if (items->value < items->next->value && order == DESC)
+				return (0);
+			items = items->next;
+		}
 	}
 	return (1);
 }

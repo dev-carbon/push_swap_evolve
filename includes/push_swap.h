@@ -37,6 +37,9 @@
 # define REV_ROTATE_B "rrb\n"
 # define REV_ROTATE_AB "rrr\n"
 
+# define ASC 0x01
+# define DESC 0x02
+
 # define LABEL_MIN_LEN 2
 # define LABEL_MAX_LEN 3
 

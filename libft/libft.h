@@ -19,7 +19,7 @@
 # include <stdint.h>
 # include <wchar.h>
 
-# define BUFFER_SIZE	1
+# define BUFFER_SIZE	42
 
 int					ft_issign(char c);
 void				ft_display_split(char **split);

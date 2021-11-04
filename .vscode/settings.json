@@ -1,8 +1,10 @@
 {
     "files.associations": {
-        "helpers.h": "c",
-        "push_swap.h": "c",
-        "validate.h": "c",
-        "stack.h": "c"
-    }
+		"helpers.h": "c",
+		"push_swap.h": "c",
+		"validate.h": "c",
+		"stack.h": "c",
+		"libft.h": "c",
+		"ops.h": "c"
+	}
 }

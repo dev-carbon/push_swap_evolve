@@ -29,6 +29,10 @@ typedef struct s_operation
 typedef struct s_stack
 {
 	int		size;
+	int		top;
+	int		last;
+	int		max;
+	int		min;
 	t_items	*items;
 }	t_stack;
 

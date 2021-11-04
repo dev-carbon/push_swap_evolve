@@ -24,6 +24,6 @@ t_stack	*rev_rotate(t_stack *stack);
 t_stack	*sort(t_stack *stack);
 int		peek(t_stack *stack);
 int		is_empty(t_stack *stack);
-int		is_sorted(t_stack *stack);
+int		is_sorted(t_stack *stack, int order);
 
 #endif

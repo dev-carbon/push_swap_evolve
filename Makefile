@@ -35,12 +35,11 @@ INC = -I./includes/ \
 	-I./srcs/helpers/ \
 	-I./srcs/validate/ \
 
-COMMON_SRCS = srcs/ops/push_a.c \
-	srcs/ops/push_b.c \
+COMMON_SRCS = srcs/ops/push_stack.c \
 	srcs/ops/push_n_swap_a.c \
-	srcs/ops/rev_rotate_a.c \
-	srcs/ops/rotate_a.c \
-	srcs/ops/swap_a.c \
+	srcs/ops/rev_rotate_stack.c \
+	srcs/ops/rotate_stack.c \
+	srcs/ops/swap_stack.c \
 	srcs/stack/is_empty.c \
 	srcs/stack/is_sorted.c \
 	srcs/stack/new_stack.c \

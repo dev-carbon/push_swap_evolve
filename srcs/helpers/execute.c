@@ -24,7 +24,7 @@ static void	rotate_ab(t_stack *a, t_stack *b)
 	rotate(b);
 }
 
-static void	rev_rotate_ab(t_stack *a, t_stack *b)
+static void	rev_rotate_stackb(t_stack *a, t_stack *b)
 {
 	rev_rotate(a);
 	rev_rotate(b);
@@ -65,5 +65,5 @@ void	execute(t_stack *a, t_stack *b, t_operation *op)
 	else if (ft_strncmp(op->label, REV_ROTATE_B, op->len) == 0)
 		rev_rotate(b);
 	else if (ft_strncmp(op->label, REV_ROTATE_AB, op->len) == 0)
-		rev_rotate_ab(a, b);
+		rev_rotate_stackb(a, b);
 }

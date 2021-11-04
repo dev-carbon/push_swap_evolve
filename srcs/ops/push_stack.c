@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_a.c                                         :+:      :+:    :+:   */
+/*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/11 11:07:09 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/11 11:07:12 by humanfou         ###   ########.fr       */
+/*   Created: 2021/06/11 11:21:52 by humanfou          #+#    #+#             */
+/*   Updated: 2021/10/09 23:28:02 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ops.h"
 
-void	rotate_a(t_stack *stack)
+void	push_stack(t_stack *dst, t_stack *src, char *label)
 {
-	if (get_max_pos(stack) == 1)
-	{
-		ft_putstrnl("ra");
-		rotate(stack);
-	}
+	push(dst, peek(src));
+	pop(src);
+	write(STDOUT_FILENO, label, 3);
 }
