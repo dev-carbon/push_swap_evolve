@@ -18,7 +18,7 @@ void	swap_stack(t_stack *stack, char *label)
 	{
 		if (ft_strncmp(label, SWAP_A, 2) == 0)
 		{
-			if (stack->items->value > stack->items->next->value)
+			if (stack->list->item.value > stack->list->next->item.value)
 			{
 				swap(stack);
 				write(STDOUT_FILENO, label, 3);
@@ -26,7 +26,7 @@ void	swap_stack(t_stack *stack, char *label)
 		}
 		else if (ft_strncmp(label, SWAP_B, 2) == 0)
 		{
-			if (stack->items->value < stack->items->next->value)
+			if (stack->list->item.value < stack->list->next->item.value)
 			{
 				swap(stack);
 				write(STDOUT_FILENO, label, 3);

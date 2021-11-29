@@ -14,22 +14,22 @@
 
 void	display_left(t_stack *a, t_stack *b)
 {
-	t_items	*ia;
-	t_items	*ib;
+	t_stack_list	*ia;
+	t_stack_list	*ib;
 
-	ia = a->items;
-	ib = b->items;
+	ia = a->list;
+	ib = b->list;
 	if (a->size > b->size)
 	{
 		while (ib)
 		{
-			printf("% 15d | %-d\n", ia->value, ib->value);
+			printf("% 15d | %-d\n", ia->item.value, ib->item.value);
 			ia = ia->next;
 			ib = ib->next;
 		}
 		while (ia)
 		{
-			printf("% 15d |\n", ia->value);
+			printf("% 15d |\n", ia->item.value);
 			ia = ia->next;
 		}
 	}
@@ -37,22 +37,22 @@ void	display_left(t_stack *a, t_stack *b)
 
 void	display_right(t_stack *a, t_stack *b)
 {
-	t_items	*ia;
-	t_items	*ib;
+	t_stack_list	*ia;
+	t_stack_list	*ib;
 
-	ia = a->items;
-	ib = b->items;
+	ia = a->list;
+	ib = b->list;
 	if (a->size <= b->size)
 	{
 		while (ia)
 		{
-			printf("% 15d | %-d\n", ia->value, ib->value);
+			printf("% 15d | %-d\n", ia->item.value, ib->item.value);
 			ib = ib->next;
 			ia = ia->next;
 		}
 		while (ib)
 		{
-			printf("                | %-d\n", ib->value);
+			printf("                | %-d\n", ib->item.value);
 			ib = ib->next;
 		}
 	}

@@ -14,12 +14,12 @@
 
 t_stack	*pop(t_stack *stack)
 {
-	t_items	*top;
+	t_stack_list	*top;
 
 	if (!is_empty(stack))
 	{
-		top = stack->items;
-		stack->items = stack->items->next;
+		top = stack->list;
+		stack->list = stack->list->next;
 		stack->size -= 1;
 		free(top);
 		top = NULL;

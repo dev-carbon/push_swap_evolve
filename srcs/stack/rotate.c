@@ -14,15 +14,15 @@
 
 t_stack	*rotate(t_stack *stack)
 {
-	t_items	*items;
+	t_stack_list	*list;
 
-	items = stack->items;
-	if (items != NULL)
+	list = stack->list;
+	if (list != NULL)
 	{
-		while (items->next != NULL)
+		while (list->next != NULL)
 		{
-			ft_swap(&items->value, &items->next->value);
-			items = items->next;
+			ft_swap(&list->item.value, &list->next->item.value);
+			list = list->next;
 		}
 	}
 	return (stack);

@@ -36,41 +36,58 @@ static int	count_words(char const *s, char c)
 	return (nb);
 }
 
-static char	*copy_word(char *dst, char *src, char c)
+static int	word_len(char const *s, char c)
 {
-	int	i;
+	int	word_len;
 
-	i = 0;
-	while (*src != c && *src != '\0')
-		dst[i++] = *src++;
-	dst[i] = '\0';
-	return (dst);
+	word_len = 0;
+	while (s[word_len] != c && s[word_len] != '\0')
+		word_len += 1;
+	return (word_len);
 }
 
-char	**ft_split(char *s, char c)
+static char	**init_tab(int nbwords)
 {
-	int		k;
-	int		word_len;
 	char	**tab;
 
-	tab = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+	tab = (char **)malloc(sizeof(char *) * (nbwords + 1));
 	if (!tab)
 		return (NULL);
+	return (tab);
+}
+
+static char	*init_word(int wordlen)
+{
+	char	*word;
+
+	word = (char *)malloc(sizeof(char) * (wordlen + 1));
+	if (!word)
+		return (NULL);
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**tab;
+
+	tab = init_tab(count_words(s, c));
+	j = 0;
 	k = 0;
-	while (*s != '\0')
+	while (*(s + j) != 0)
 	{
-		while (*s == c && *s != '\0')
-			s++;
-		word_len = 0;
-		while (s[word_len] != c && s[word_len] != '\0')
-			word_len++;
-		if (word_len > 0)
+		if (*(s + j) != c && *(s + j) != 0)
 		{
-			tab[k] = ft_strnew(word_len);
-			tab[k] = copy_word(tab[k], s, c);
-			k++;
+			tab[k] = init_word(word_len(s, c));
+			i = 0;
+			while (*(s + j) != c && *(s + j) != 0)
+				tab[k][i++] = *(s + j++);
+			tab[k++][i] = 0;
 		}
-		s += word_len;
+		if (*(s + j++) == '\0')
+			j -= 1;
 	}
 	tab[k] = NULL;
 	return (tab);

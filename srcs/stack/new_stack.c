@@ -18,6 +18,6 @@ t_stack	*new_stack(void)
 
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	stack->size = 0;
-	stack->items = NULL;
+	stack->list = NULL;
 	return (stack);
 }

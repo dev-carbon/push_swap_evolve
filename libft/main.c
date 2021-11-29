@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_issign.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/06 22:33:27 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/06 22:35:32 by humanfou         ###   ########.fr       */
+/*   Created: 2021/11/02 22:48:38 by humanfou          #+#    #+#             */
+/*   Updated: 2021/11/04 15:15:06 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	ft_issign(char c)
+int	main(int ac, char **av)
 {
-	if (c != '+' && c != '-')
-		return (0);
-	return (1);
+	int	len;
+
+	if (ac == 2)
+	{
+		len = ft_strlen(av[1]);
+		write(1, av[1], len);
+	}
+	return (0);
 }

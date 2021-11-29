@@ -12,14 +12,14 @@
 
 #include "ops.h"
 
-void	push_n_swap_a(t_stack *stack_a, t_stack *stack_b)
+void	push_n_swap_a(t_stack *sa, t_stack *sb)
 {
-	while (!is_empty(stack_b) && stack_a->top < stack_b->top)
+	while (!is_empty(sb) && sa->top.value < sb->top.value)
 	{
 		write(STDOUT_FILENO, PUSH_A, 3);
-		push(stack_a, peek(stack_b));
-		pop(stack_b);
-		ft_putstrnl("sa");
-		swap(stack_a);
+		push(sa, peek(sb).value);
+		pop(sb);
+		write(STDOUT_FILENO, "sa\n", 3);
+		swap(sa);
 	}
 }

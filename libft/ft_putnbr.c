@@ -14,19 +14,19 @@
 
 void	ft_putnbr(int n)
 {
-	uintmax_t	unbr;
+	long	nb;
 
-	unbr = n;
-	if (unbr < 0)
+	nb = n;
+	if (nb < 0)
 	{
 		ft_putchar('-');
-		unbr = -unbr;
+		nb = -nb;
 	}
-	if (unbr > 9)
+	if (nb > 9)
 	{
-		ft_putnbr(unbr / 10);
-		ft_putnbr(unbr % 10);
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
 	else
-		ft_putchar((unbr + 48));
+		ft_putchar((nb + 48));
 }

@@ -14,13 +14,13 @@
 
 void	display_stack(t_stack *stack)
 {
-	t_items	*items;
+	t_stack_list	*list;
 
-	items = stack->items;
-	while (items)
+	list = stack->list;
+	while (list)
 	{
-		printf("% 15d |\n", items->value);
-		items = items->next;
+		printf("% 15d |\n", list->item.value);
+		list = list->next;
 	}
 	printf("________________ _______________\n");
 	printf("         stack a stack b\n\n");

@@ -12,14 +12,14 @@
 
 #include "helpers.h"
 
-static void	check_duplicates(t_items *items, int nbr)
+static void	check_duplicates(t_stack_list *list, int nbr)
 {
-	t_items	*buff;
+	t_stack_list	*buff;
 
-	buff = items;
+	buff = list;
 	while (buff != NULL)
 	{
-		if (buff->value == nbr)
+		if (buff->item.value == nbr)
 			escape(EXIT_FAILURE);
 		buff = buff->next;
 	}
@@ -27,19 +27,22 @@ static void	check_duplicates(t_items *items, int nbr)
 
 static void	add_item(t_stack *stack, int nbr)
 {
-	t_items	*new;
-	t_items	*buff;
+	int				i;
+	t_stack_list	*new;
+	t_stack_list	*buff;
 
-	new = (t_items *)malloc(sizeof(t_items));
+	new = (t_stack_list *)malloc(sizeof(t_stack_list));
 	if (new == NULL)
 		escape(EXIT_FAILURE);
-	new->value = nbr;
+	i = -1;
+	new->item.value = nbr;
+	new->item.index = ++i;
 	new->next = NULL;
-	if (stack->items == NULL)
-		stack->items = new;
+	if (stack->list == NULL)
+		stack->list = new;
 	else
 	{
-		buff = stack->items;
+		buff = stack->list;
 		while (buff->next != NULL)
 			buff = buff->next;
 		buff->next = new;
@@ -62,7 +65,7 @@ t_stack	*parse(char **argv, t_stack *stack)
 			nbr = ft_atoi(split[i]);
 			if (!is_valid_int(split[i], nbr))
 				escape(EXIT_FAILURE);
-			check_duplicates(stack->items, nbr);
+			check_duplicates(stack->list, nbr);
 			add_item(stack, nbr);
 		}
 		destroy_split(split);

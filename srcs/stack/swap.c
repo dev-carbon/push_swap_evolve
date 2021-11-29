@@ -14,9 +14,9 @@
 
 t_stack	*swap(t_stack *stack)
 {
-	t_items	*items;
+	t_stack_list	*list;
 
-	items = stack->items;
-	ft_swap(&items->value, &items->next->value);
+	list = stack->list;
+	ft_swap(&list->item.value, &list->next->item.value);
 	return (stack);
 }

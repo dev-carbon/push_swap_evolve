@@ -50,7 +50,7 @@ COMMON_SRCS = srcs/ops/push_stack.c \
 	srcs/stack/rotate.c \
 	srcs/stack/sort.c \
 	srcs/stack/swap.c \
-	srcs/helpers/destroy_items.c \
+	srcs/helpers/destroy_list.c \
 	srcs/helpers/destroy_ops.c \
 	srcs/helpers/destroy_split.c \
 	srcs/helpers/destroy_stack.c \
@@ -63,46 +63,49 @@ COMMON_SRCS = srcs/ops/push_stack.c \
 	srcs/helpers/display_result.c \
 	srcs/helpers/display_stack.c \
 	srcs/helpers/display_stacks.c \
+	srcs/helpers/display_list.c \
 	srcs/validate/is_valid_int.c \
 
-COMMON_OBJS = $(COMMON_SRCS: .c=.o)
+COMMON_OBJS = $(COMMON_SRCS:.c=.o)
 
 PUSH_SWAP_SRCS = srcs/driver/push_swap.c \
 
-PUSH_SWAP_OBJS = $(PUSH_SWAP_SRCS: .c=.o)
+PUSH_SWAP_OBJS = $(PUSH_SWAP_SRCS:.c=.o)
 
 CHECKER_SRCS = srcs/driver/checker.c \
 	srcs/validate/is_valid_operation.c \
 
-CHECKER_OBJS = $(CHECKER_SRCS: .c=.o)
+CHECKER_OBJS = $(CHECKER_SRCS:%.c=%.o)
 
 all: $(PUSH_SWAP)
 
 bonus: $(CHECKER)
 
+%.o: %.c
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
 $(PUSH_SWAP): $(COMMON_OBJS) $(PUSH_SWAP_OBJS)
-	@echo "$(YELLOW)$(PUSH_SWAP): Creating libft.$(RESET)"
+	@echo "$(YELLOW)$(PUSH_SWAP) Creating libft ...$(RESET)"
 	@$(MAKE) -sC libft
 	@echo "$(YELLOW)Compiling $(PUSH_SWAP).$(RESET)"
-	@$(CC) $(CFLAG) $(SANITIZER) -o $@ $(INC) $^ $(LIB)
-	@echo "$(GREEN)[Ok] $(PUSH_SWAP) ready.$(RESET)"
+	@$(CC) $(CFLAG) $(SANITIZER) $^ $(LIB) -o $@
+	@echo "$(GREEN)$(PUSH_SWAP) ready.$(RESET)"
 
 $(CHECKER): $(COMMON_OBJS) $(CHECKER_OBJS)
-	@echo "$(YELLOW)$(CHECKER): Creating libft.$(RESET)"
+	@echo "$(YELLOW)$(CHECKER) Creating libft ...$(RESET)"
 	@$(MAKE) -sC libft
 	@echo "$(YELLOW)Compiling $(CHECKER).$(RESET)"
-	@$(CC) $(CFLAG) $(SANITIZER) -o $@ $(INC) $^ $(LIB)
-	@echo "$(GREEN)[Ok] $(CHECKER) ready.$(RESET)"
+	@$(CC) $(CFLAG) $(SANITIZER) $^ $(LIB) -o $@
+	@echo "$(GREEN)$(CHECKER) ready.$(RESET)"
 
 clean:
 	@$(MAKE) -sC libft clean
-	@rm -f *.o
-	@echo "$(RED)$(PUSH_SWAP) and $(CHECKER) object files removed.$(RESET)"
+	@rm -f $(COMMON_OBJS) $(PUSH_SWAP_OBJS) $(CHECKER_OBJS)
 
 fclean:
 	@$(MAKE) -sC libft fclean
-	@rm -f *.o $(PUSH_SWAP) $(CHECKER)
-	@echo "$(RED)Executables and object files removed.$(RESET)"
+	@rm -f $(CHECKER) $(COMMON_OBJS) $(PUSH_SWAP_OBJS) $(CHECKER_OBJS)
+	@rm -f $(PUSH_SWAP) $(CHECKER)
 
 re: fclean all
 

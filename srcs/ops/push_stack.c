@@ -14,7 +14,10 @@
 
 void	push_stack(t_stack *dst, t_stack *src, char *label)
 {
-	push(dst, peek(src));
+	t_item	top;
+
+	top = peek(src);
+	push(dst, top.value);
 	pop(src);
 	write(STDOUT_FILENO, label, 3);
 }

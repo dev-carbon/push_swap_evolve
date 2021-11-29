@@ -16,7 +16,7 @@ void	destroy_stack(t_stack *stack)
 {
 	if (stack != NULL)
 	{
-		destroy_items(stack->items);
+		destroy_list(stack->list);
 		free(stack);
 		stack = NULL;
 	}

@@ -16,7 +16,7 @@ void	rotate_stack(t_stack *stack, char *label)
 {
 	if (ft_strncmp(label, ROTATE_A, 2) == 0)
 	{
-		if (stack->max == stack->top)
+		if (stack->max.value == stack->top.value)
 		{
 			rotate(stack);
 			write(STDOUT_FILENO, label, 3);
@@ -24,7 +24,7 @@ void	rotate_stack(t_stack *stack, char *label)
 	}
 	else if (ft_strncmp(label, ROTATE_B, 2) == 0)
 	{
-		if (stack->min == stack->top)
+		if (stack->min.value == stack->top.value)
 		{
 			rotate(stack);
 			write(STDOUT_FILENO, label, 3);

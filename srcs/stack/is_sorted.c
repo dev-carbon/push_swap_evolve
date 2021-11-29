@@ -14,18 +14,18 @@
 
 int	is_sorted(t_stack *stack, int order)
 {
-	t_items	*items;
+	t_stack_list	*list;
 
-	items = stack->items;
+	list = stack->list;
 	if (!is_empty(stack))
 	{
-		while (items->next != NULL)
+		while (list->next != NULL)
 		{
-			if (items->value > items->next->value && order == ASC)
+			if (list->item.value > list->next->item.value && order == ASC)
 				return (0);
-			if (items->value < items->next->value && order == DESC)
+			if (list->item.value < list->next->item.value && order == DESC)
 				return (0);
-			items = items->next;
+			list = list->next;
 		}
 	}
 	return (1);

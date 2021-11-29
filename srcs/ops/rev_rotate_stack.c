@@ -16,7 +16,7 @@ void	rev_rotate_stack(t_stack *stack, char *label)
 {
 	if (ft_strncmp(label, REV_ROTATE_A, 2) == 0)
 	{
-		if (stack->min == stack->last)
+		if (stack->min.value == stack->last.value)
 		{
 			rev_rotate(stack);
 			write(STDOUT_FILENO, label, 4);

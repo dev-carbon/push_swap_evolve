@@ -13,11 +13,17 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct s_items
+typedef struct s_item
 {
+	int				index;
 	int				value;
-	struct s_items	*next;
-}	t_items;
+}	t_item;
+
+typedef struct s_stack_list
+{
+	t_item				item;
+	struct s_stack_list	*next;
+}	t_stack_list;
 
 typedef struct s_operation
 {
@@ -28,12 +34,12 @@ typedef struct s_operation
 
 typedef struct s_stack
 {
-	int		size;
-	int		top;
-	int		last;
-	int		max;
-	int		min;
-	t_items	*items;
+	int				size;
+	t_item			top;
+	t_item			last;
+	t_item			min;
+	t_item			max;
+	t_stack_list	*list;
 }	t_stack;
 
 #endif

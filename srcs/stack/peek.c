@@ -12,9 +12,13 @@
 
 #include "stack.h"
 
-int	peek(t_stack *stack)
+t_item	peek(t_stack *stack)
 {
+	t_item	item;
+
+	item.index = INT_MIN;
+	item.value = INT_MIN;
 	if (!is_empty(stack))
-		return (stack->items->value);
-	return (INT_MIN);
+		item = stack->list->item;
+	return (item);
 }

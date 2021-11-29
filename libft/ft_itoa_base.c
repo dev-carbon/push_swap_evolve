@@ -17,9 +17,10 @@ char	*generate_string(char *str, char *mask, intmax_t value, int base)
 	uintmax_t	unbr;
 	int			i;
 
-	unbr = value;
 	if (value < 0)
 		unbr = -value;
+	else
+		unbr = value;
 	i = -1;
 	if (unbr == 0)
 		str[++i] = mask[0];
@@ -43,7 +44,10 @@ char	*ft_itoa_base(intmax_t value, int base, char case_type)
 	char		*res;
 	int			number_length;
 
-	number_length = ft_nbrlen(value);
+	if (value < 0)
+		number_length = ft_nbrlen(value) + 1;
+	else
+		number_length = ft_nbrlen(value);
 	res = (char *)malloc(sizeof(char) * (number_length + 1));
 	if (!res)
 		return (NULL);

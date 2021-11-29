@@ -57,6 +57,7 @@ static int	checker(t_stack *a)
 	count = 0;
 	ops = NULL;
 	b = new_stack();
+	display_stacks(a, b);
 	ft_putstr("\n\33[4mExec\33[0m: ");
 	while (get_next_line(STDIN_FILENO, &label) && is_valid_operation(label))
 	{
@@ -81,7 +82,6 @@ int	main(int argc, char **argv)
 	{
 		stack = new_stack();
 		parse(argv + 1, stack);
-		// display_stack(stack);
 		checker(stack);
 		destroy_stack(stack);
 	}

@@ -17,21 +17,21 @@ int	get_max_pos(t_stack *stack)
 	int		i;
 	int		pos;
 	int		max;
-	t_items	*items;
+	t_stack_list	*list;
 
 	i = 1;
 	pos = 1;
-	items = stack->items;
-	max = items->value;
-	while (items != NULL)
+	list = stack->list;
+	max = list->item.value;
+	while (list != NULL)
 	{
-		if (max < items->value)
+		if (max < list->item.value)
 		{
-			max = items->value;
+			max = list->item.value;
 			pos = i;
 		}
 		i++;
-		items = items->next;
+		list = list->next;
 	}
 	return (pos);
 }

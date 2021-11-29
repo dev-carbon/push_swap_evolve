@@ -12,162 +12,197 @@
 
 #include "stack.h"
 
-t_stack	*init_tracker(t_stack *stack)
+t_stack	*refresh_stack(t_stack *stack)
 {
-	t_items	*buff;
+	int				index;
+	t_stack_list	*list;
 
-	buff = stack->items;
+	index = -1;
+	list = stack->list;
 	stack->top = peek(stack);
 	stack->max = stack->top;
 	stack->min = stack->top;
-	while (buff != NULL)
+	while (list != NULL)
 	{
-		if (stack->max < buff->value)
-			stack->max = buff->value;
-		if (stack->min > buff->value)
-			stack->min = buff->value;
-		if (buff->next == NULL)
-			stack->last = buff->value;
-		buff = buff->next;
+		list->item.index = ++index;
+		if (stack->max.value < list->item.value)
+			stack->max = list->item;
+		if (stack->min.value > list->item.value)
+			stack->min = list->item;
+		list = list->next;
 	}
 	return (stack);
 }
 
-void	display_tracker(t_stack stack)
+void	display_prop(t_stack stack)
 {
-	printf("top = %d\nlast = %d\nmin = %d\nmax = %d\n",
-		stack.top, stack.last, stack.min, stack.max);
+	printf("size : %d\n\n", stack.size);
+	printf("TOP\nindex : %d\nvalue : %d\n_____\n", stack.top.index, stack.top.value);
+	printf("MIN\nindex : %d\nvalue : %d\n_____\n", stack.min.index, stack.min.value);
+	printf("MAX\nindex : %d\nvalue : %d\n_____\n", stack.max.index, stack.max.value);
 }
 
 t_stack	*sort(t_stack *sa)
 {
 	t_stack		*sb;
-	// int			count = 0;
+	int			count;
+	int			count_sa;
+	int			count_sb;
+	int			count_pa;
+	int			count_pb;
+	int			count_ra;
+	int			count_rb;
+	int			count_rra;
+	int			count_rrb;
 
+	count =  0;
+	count_sa =  0;
+	count_sb =  0;
+	count_pa =  0;
+	count_pb =  0;
+	count_ra =  0;
+	count_rb =  0;
+	count_rra =  0;
+	count_rrb =  0;
 	sb = new_stack();
-	while (!is_empty(sa))
+	refresh_stack(sa);
+	refresh_stack(sb);
+	display_stacks(sa, sb);
+	while (1)
 	{
-		// STACK A
-		// if max = top rotate a
-		// if min = last rev_rotate a
-
-		// if top > next swap a then push b
-		// else push b
-
-		// STACK B
-		// si min = top -> rotate b
-
-		// si top A < top B
-
-
-		init_tracker(sa);
-		if (is_empty(sb) && is_sorted(sa, ASC))
-			break ;
-		if (sa->max == sa->top)
+		// partition.
+		while (sa->size > sb->size + 1)
 		{
-			rotate(sa);
-			write(STDOUT_FILENO, ROTATE_A, 3);
-			init_tracker(sa);
-		}
-		if (sa->min == sa->last)
-		{
-			rev_rotate(sa);
-			write(STDOUT_FILENO, REV_ROTATE_A, 4);
-			init_tracker(sa);
-		}
-		if (sa->size > 1)
-		{
-			if (sa->top > sa->items->next->value)
-			{
-				swap(sa);
-				write(STDOUT_FILENO, SWAP_A, 3);
-				init_tracker(sa);
-			}
-		}
-		if (sb->size > 1)
-		{
-			if (sb->top == sb->min)
+			// if (sa->top.value > sa->list->next->item.value)
+			// {
+			// 	rotate(sa);
+			// 	// swap(sa);
+			// 	refresh_stack(sa);
+			// 	// ft_putstr("sa\n");
+			// 	ft_putstr("ra\n");
+			// 	count++;
+			// 	count_ra++;
+			// }
+			push(sb, sa->top.value);
+			pop(sa);
+			refresh_stack(sa);
+			refresh_stack(sb);
+			ft_putstr("pb\n");
+			if (sb->top.value == sb->max.value && sb->size > 1)
 			{
 				rotate(sb);
-				write(STDOUT_FILENO, ROTATE_B, 3);
-				init_tracker(sb);
+				refresh_stack(sb);
+				ft_putstr("rb\n");
+				count++;
+				count_rb++;
 			}
+			// display_stacks(sa, sb);
+			count++;
+			count_pb++;
 		}
-		if (sa->top > sb->top && !is_sorted(sa, ASC))
+		if (is_sorted(sa, ASC) && sa->top.value > sb->max.value)
+			break ;
+		if (sa->min.value != sa->top.value)
 		{
-			push(sb, sa->top);
-			pop(sa);
-			write(STDOUT_FILENO, PUSH_B, 3);
-			init_tracker(sa);
-			init_tracker(sb);
-		}
-		else if (sa->top > sb->top)
-		{
-			push(sa, sb->top);
-			pop(sb);
-			write(STDOUT_FILENO, PUSH_A, 3);
-			init_tracker(sa);
-			init_tracker(sb);
-		}
-		else
-		{
-			while (sa->top < sb->top)
+			if (sa->min.index <= sa->size / 2)
 			{
-				push(sa, sb->top);
-				pop(sb);
-				write(STDOUT_FILENO, PUSH_A, 3);
-				init_tracker(sa);
-				init_tracker(sb);
+				if (1)
+				{
+					if (sa->min.value == sa->top.value)
+						break ;
+					rotate(sa);
+					refresh_stack(sa);
+					ft_putstr("ra\n");
+					// display_stacks(sa, sb);
+					count++;
+					count_ra++;
+				}
+			}
+			else
+			{
+				while (1)
+				{
+					if (sa->min.value == sa->top.value)
+						break ;
+					rev_rotate(sa);
+					refresh_stack(sa);
+					ft_putstr("rra\n");
+					// display_stacks(sa, sb);
+					count++;
+					count_rra++;
+				}
 			}
 		}
-
-			
-			
-		// 	swap_a(sa);
-		// push_n_swap_a(sa, sb);
-		// if (!is_sorted(sa))
-		// 	push_b(sb, sa);
-		// else
-		// 	break ;
-
-
-
-		// init_tracker(sa);
-		// rev_rotate_stack(sa, REV_ROTATE_A);
-		// init_tracker(sa);
-		// rotate_stack(sa, ROTATE_A);
-		// while (!is_empty(sb) && (sa->top < sb->top))
-		// {
-		// 	push_stack(sa, sb, PUSH_A);
-		// 	init_tracker(sa);
-		// 	swap_stack(sa, SWAP_A);
-		// 	init_tracker(sa);
-		// }
-		// swap_stack(sa, SWAP_A);
-		// init_tracker(sa);
-		// while (!is_empty(sb) && (sa->top < sb->top))
-		// {
-		// 	push_stack(sa, sb, PUSH_A);
-		// 	init_tracker(sa);
-		// 	swap_stack(sa, SWAP_A);
-		// 	init_tracker(sa);
-		// }
-		// while (!is_empty(sa) && is_sorted(sb, DESC))
-		// 	push_stack(sb, sa, PUSH_B);
-		// init_tracker(sb);
-		// rotate_stack(sb, ROTATE_B);
-		// init_tracker(sb);
-		// swap_stack(sb, SWAP_B);
-		// // if (++count == 100)
-		// 	// break;
-		// if (is_empty(sb) && is_sorted(sa, ASC))
-		// 	break ;
-		// // ft_putstr("_____________\n");
+		if (!is_sorted(sa, ASC) || sa->top.value < sb->max.value)
+		{
+			// printf("hello\n");
+			// break ;
+			push(sb, sa->top.value);
+			pop(sa);
+			refresh_stack(sa);
+			refresh_stack(sb);
+			ft_putstr("pb\n");
+			// display_stacks(sa, sb);
+			count++;
+			count_pb++;
+		}
+		if (is_empty(sa))
+			break ;
 	}
-	// printf("count: %d\n", count);
-	while (!is_empty(sb))
-		push_stack(sa, sb, PUSH_A);
-	destroy_stack(sb);
-	// display_stack(sa);
+	while (1)
+	{
+		// break;
+		if (is_empty(sb))
+			break ;
+		if (sb->max.value != sb->top.value)
+		{
+			if (sb->max.index <= sb->size / 2)
+			{
+				while (1)
+				{
+					if (sb->max.value == sb->top.value)
+						break ;
+					rotate(sb);
+					refresh_stack(sb);
+					ft_putstr("rb\n");
+					// display_stacks(sa, sb);
+					count++;
+					count_rb++;
+				}
+			}
+			else
+			{
+				while (1)
+				{
+					if (sb->max.value == sb->top.value)
+						break ;
+					rev_rotate(sb);
+					refresh_stack(sb);
+					ft_putstr("rrb\n");
+					// display_stacks(sa, sb);
+					count++;
+					count_rrb++;
+				}
+			}
+		}
+		push(sa, sb->top.value);
+		pop(sb);
+		refresh_stack(sa);
+		refresh_stack(sb);
+		ft_putstr("pa\n");
+		// display_stacks(sa, sb);
+		count++;
+		count_pa++;
+	}
+	display_result(sa, sb);
+	printf("\ntotal sa: %d\n", count_sa);
+	printf("total sb: %d\n", count_sb);
+	printf("total pa: %d\n", count_pa);
+	printf("total pb: %d\n", count_pb);
+	printf("total ra: %d\n", count_ra);
+	printf("total rb: %d\n", count_rb);
+	printf("total rra: %d\n", count_rra);
+	printf("total rrb: %d\n", count_rrb);
+	printf("\ntotal hits: %d\n\n", count);
 	return (sa);
 }

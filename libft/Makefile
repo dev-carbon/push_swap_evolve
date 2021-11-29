@@ -6,27 +6,18 @@
 #    By: humanfou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    created: 2020/09/23 17:49:24 by humanfou          #+#    #+#              #
-#    Updated: 2021/06/06 22:36:03 by humanfou         ###   ########.fr        #
+#    Updated: 2021/11/04 15:16:43 by humanfou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-RED = \33[31m
-GREEN = \33[32m
-YELLOW = \33[33m
-BLUE = \33[34m
-RESET = \33[0m
 
 NAME = libft.a
 
 CC = clang
 
-CCFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 SRCS = get_next_line.c \
-	ft_issign.c \
-	ft_display_split.c \
 	ft_swap.c \
-	ft_putstrnl.c \
 	ft_strncpy.c \
 	ft_strremove_spaces.c \
 	ft_nbr_to_string.c \
@@ -82,8 +73,9 @@ SRCS = get_next_line.c \
 	ft_putnbr_fd.c \
 	ft_putnbr.c \
 	ft_putnbrmax_fd.c \
-	ft_putnbrumax_fd.c \
-	ft_lstnew.c \
+	ft_putnbrumax_fd.c 
+
+BONUS = ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
 	ft_lstlast.c \
@@ -95,21 +87,28 @@ SRCS = get_next_line.c \
 
 OBJ = $(SRCS:.c=.o)
 
-all: $(OBJ)
+OBJ_BONUS = $(BONUS:.c=.o)
+
+all: $(NAME)
+
+bonus: $(OBJ) $(OBJ_BONUS)
+	@echo "Compiling $(NAME) ..."
 	@ar rc $(NAME) $^
-	@echo "$(GREEN)$(NAME) created.$(RESET)"
+	@ranlib $(NAME)
+	@echo $(NAME) [Ok].
 
 $(NAME):
-	@$(CC) $(CFLAGS) -c $(SRCS)
-	@$(LIB) $(NAME) $(OBJ)
+	@echo "Compiling $(NAME) ..."
+	@$(CC) -g $(CFLAGS) -c $(SRCS)
+	@ar rc $(NAME) $(OBJ)
+	@echo $(NAME) created.
 
 clean:
-	@rm -rf $(OBJ) $(OBJ_BONUS)
-	@echo "$(RED)$(NAME) object files removed.$(RESET)"
+	@/bin/rm -rf $(OBJ) $(OBJ_BONUS)
 
-fclean:
-	@rm -rf $(OBJ) $(NAME)
-	@echo "$(RED)$(NAME) and object files removed.$(RESET)"
+fclean: clean
+	@/bin/rm -f $(NAME)
+
 
 re: fclean all
 

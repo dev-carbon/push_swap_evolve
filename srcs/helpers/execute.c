@@ -32,13 +32,13 @@ static void	rev_rotate_stackb(t_stack *a, t_stack *b)
 
 static void	do_push(t_stack **dst, t_stack **src)
 {
-	int		top;
+	t_item		top;
 
 	if (!is_empty(*src))
 	{
 		top = peek(*src);
 		*src = pop(*src);
-		*dst = push(*dst, top);
+		*dst = push(*dst, top.value);
 	}
 }
 

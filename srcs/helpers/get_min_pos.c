@@ -17,21 +17,21 @@ int	get_min_pos(t_stack *stack)
 	int		i;
 	int		pos;
 	int		min;
-	t_items	*items;
+	t_stack_list	*list;
 
 	i = 1;
 	pos = 1;
-	items = stack->items;
-	min = items->value;
-	while (items != NULL)
+	list = stack->list;
+	min = list->item.value;
+	while (list != NULL)
 	{
-		if (min > items->value)
+		if (min > list->item.value)
 		{
-			min = items->value;
+			min = list->item.value;
 			pos = i;
 		}
 		i++;
-		items = items->next;
+		list = list->next;
 	}
 	return (pos);
 }

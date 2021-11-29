@@ -6,24 +6,20 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 16:22:13 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/06 22:36:37 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/11/04 15:18:22 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdint.h>
 # include <wchar.h>
 
-# define BUFFER_SIZE	42
+# define BUFFER_SIZE	1
 
-int					ft_issign(char c);
-void				ft_display_split(char **split);
-void				ft_putstrnl(char *str);
 void				ft_swap(int *a, int *b);
 char				*strncpy(char *dest, const char *src, size_t n);
 char				*ft_nbr_to_string(int nbr);
@@ -61,7 +57,7 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
-long int			ft_atoi(const char *nptr);
+int					ft_atoi(const char *nptr);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(const char *s);
 char				*ft_strndup(const char *s, size_t n);
@@ -69,7 +65,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_strrtrim(char const *s1, char const *set);
-char				**ft_split(char *s, char c);
+char				**ft_split(char const *s, char c);
 char				*ft_itoa(intmax_t nbr);
 char				*ft_itoa_base(intmax_t value, int base, char case_type);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));

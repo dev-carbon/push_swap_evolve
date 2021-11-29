@@ -12,11 +12,6 @@
 
 #include "push_swap.h"
 
-void	push_swap(t_stack *stack)
-{
-	sort(stack);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
@@ -25,7 +20,7 @@ int	main(int argc, char **argv)
 	{
 		a = new_stack();
 		parse(argv + 1, a);
-		push_swap(a);
+		sort(a);
 		destroy_stack(a);
 	}
 	return (0);

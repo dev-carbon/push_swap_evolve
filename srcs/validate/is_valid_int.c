@@ -17,7 +17,7 @@ int	is_valid_int(char *str, long int nbr)
 	int			i;
 
 	i = -1;
-	if (ft_issign(str[0]))
+	if (str[0] == '+' || str[0] == '-')
 		i++;
 	while (str[++i] != '\0')
 		if (!ft_isdigit(str[i]))
