@@ -21,8 +21,9 @@ t_stack	*pop(t_stack *stack);
 t_stack	*swap(t_stack *stack);
 t_stack	*rotate(t_stack *stack);
 t_stack	*rev_rotate(t_stack *stack);
-t_stack	*sort(t_stack *stack);
+t_stack	*sort(t_stack *a, t_stack *b, int *hits);
 t_item	peek(t_stack *stack);
+
 int		is_empty(t_stack *stack);
 int		is_sorted(t_stack *stack, int order);
 

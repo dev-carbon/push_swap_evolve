@@ -14,7 +14,6 @@
 
 void	display_result(t_stack *a, t_stack *b)
 {
-	display_stacks(a, b);
 	if (is_empty(b) && is_sorted(a, ASC))
 		ft_putendl_fd("\33[32mOK\33[0m\n", STDOUT_FILENO);
 	else

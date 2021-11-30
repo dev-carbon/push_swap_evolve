@@ -22,11 +22,11 @@ CHECKER = checker
 
 CC = clang
 
-CFLAG = -Wall -Wextra -Werror -g
+CFLAG = -Wall -Wextra -Werror
 
 LIB = -Llibft -lft
 
-SANITIZER = -fsanitize=address
+SANITIZER =  -g3 -fsanitize=address
 
 INC = -I./includes/ \
 	-I./libft/ \
@@ -35,12 +35,7 @@ INC = -I./includes/ \
 	-I./srcs/helpers/ \
 	-I./srcs/validate/ \
 
-COMMON_SRCS = srcs/ops/push_stack.c \
-	srcs/ops/push_n_swap_a.c \
-	srcs/ops/rev_rotate_stack.c \
-	srcs/ops/rotate_stack.c \
-	srcs/ops/swap_stack.c \
-	srcs/stack/is_empty.c \
+COMMON_SRCS = srcs/stack/is_empty.c \
 	srcs/stack/is_sorted.c \
 	srcs/stack/new_stack.c \
 	srcs/stack/peek.c \
@@ -56,14 +51,12 @@ COMMON_SRCS = srcs/ops/push_stack.c \
 	srcs/helpers/destroy_stack.c \
 	srcs/helpers/escape.c \
 	srcs/helpers/execute.c \
-	srcs/helpers/get_max_pos.c \
-	srcs/helpers/get_min_pos.c \
 	srcs/helpers/parse.c \
+	srcs/helpers/refresh_stack.c \
 	srcs/helpers/display_debug_data.c \
 	srcs/helpers/display_result.c \
 	srcs/helpers/display_stack.c \
 	srcs/helpers/display_stacks.c \
-	srcs/helpers/display_list.c \
 	srcs/validate/is_valid_int.c \
 
 COMMON_OBJS = $(COMMON_SRCS:.c=.o)
@@ -75,14 +68,7 @@ PUSH_SWAP_OBJS = $(PUSH_SWAP_SRCS:.c=.o)
 CHECKER_SRCS = srcs/driver/checker.c \
 	srcs/validate/is_valid_operation.c \
 
-CHECKER_OBJS = $(CHECKER_SRCS:%.c=%.o)
-
-all: $(PUSH_SWAP)
-
-bonus: $(CHECKER)
-
-%.o: %.c
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+CHECKER_OBJS = $(CHECKER_SRCS:.c=.o)
 
 $(PUSH_SWAP): $(COMMON_OBJS) $(PUSH_SWAP_OBJS)
 	@echo "$(YELLOW)$(PUSH_SWAP) Creating libft ...$(RESET)"
@@ -97,6 +83,13 @@ $(CHECKER): $(COMMON_OBJS) $(CHECKER_OBJS)
 	@echo "$(YELLOW)Compiling $(CHECKER).$(RESET)"
 	@$(CC) $(CFLAG) $(SANITIZER) $^ $(LIB) -o $@
 	@echo "$(GREEN)$(CHECKER) ready.$(RESET)"
+
+all: $(PUSH_SWAP)
+
+bonus: $(CHECKER)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) $(INC) -c $^ -o $@
 
 clean:
 	@$(MAKE) -sC libft clean

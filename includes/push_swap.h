@@ -20,7 +20,6 @@
 
 # include "libft.h"
 # include "struct.h"
-# include "ops.h"
 # include "stack.h"
 # include "helpers.h"
 # include "validate.h"

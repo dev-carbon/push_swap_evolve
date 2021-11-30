@@ -36,6 +36,7 @@ typedef struct s_stack
 {
 	int				size;
 	t_item			top;
+	t_item			middle;
 	t_item			last;
 	t_item			min;
 	t_item			max;
