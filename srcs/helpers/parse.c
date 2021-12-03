@@ -27,16 +27,13 @@ static void	check_duplicates(t_stack_list *list, int nbr)
 
 static void	add_item(t_stack *stack, int nbr)
 {
-	int				i;
 	t_stack_list	*new;
 	t_stack_list	*buff;
 
 	new = (t_stack_list *)malloc(sizeof(t_stack_list));
 	if (new == NULL)
 		escape(EXIT_FAILURE);
-	i = -1;
 	new->item.value = nbr;
-	new->item.index = ++i;
 	new->next = NULL;
 	if (stack->list == NULL)
 		stack->list = new;
@@ -48,6 +45,20 @@ static void	add_item(t_stack *stack, int nbr)
 		buff->next = new;
 	}
 	stack->size++;
+}
+
+static void	set_index(t_stack *stack)
+{
+	int				index;
+	t_stack_list	*l;
+
+	index = 0;
+	l = stack->list;
+	while (l != NULL)
+	{
+		l->item.index = index++;
+		l = l->next;
+	}
 }
 
 t_stack	*parse(char **argv, t_stack *stack)
