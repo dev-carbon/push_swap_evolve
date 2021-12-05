@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   get_max_bottom_sibbling.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 13:36:31 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/07 13:36:33 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/05 21:14:24 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/05 21:14:45 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "sort.h"
 
-t_stack	*rev_rotate(t_stack *stack)
+t_item	get_max_bottom_sibling(t_stack *s, int val)
 {
-	t_stack_list	*head;
-	t_stack_list	*next;
+	int				n;
+	t_item			max;
+	t_stack_list	*l;
 
-	head = stack->list;
-	if (head != NULL)
+	max = s->max;
+	l = s->list;
+	while (l)
 	{
-		next = head->next;
-		while (next)
-		{
-			ft_swap(&head->item.value, &next->item.value);
-			next = next->next;
-		}
+		if (l->item.value > val)
+			if (max.value > l->item.value)
+				max = l->item;
+		l = l->next;
 	}
-	return (stack);
+	return(max);
 }
+

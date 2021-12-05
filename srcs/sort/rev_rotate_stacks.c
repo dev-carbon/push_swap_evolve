@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rev_rotate_stacks.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 13:35:11 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/07 13:35:12 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/05 21:10:33 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/05 21:11:00 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "sort.h"
 
-t_stack	*swap(t_stack *stack)
+int	rev_rotate_stacks(t_stack *a, t_stack *b, char *label)
 {
-	t_stack_list	*list;
-
-	list = stack->list;
-	ft_swap(&list->item.value, &list->next->item.value);
-	return (stack);
+	rev_rotate(a);
+	rev_rotate(b);
+	refresh_stack(a);
+	refresh_stack(b);
+	write(STDOUT_FILENO, label, ft_strlen(label));
+	return (1);
 }
+

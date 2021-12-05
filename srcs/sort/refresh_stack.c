@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "helpers.h"
+#include "sort.h"
 
 t_stack	*refresh_stack(t_stack *stack)
 {

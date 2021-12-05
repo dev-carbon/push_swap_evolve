@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   get_min_bottom_sibbling.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 19:09:24 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/01 19:11:23 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/05 21:13:38 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/05 21:14:10 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "sort.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <limits.h>
+t_item	get_min_bottom_sibbling(t_stack *s, int val)
+{
+	t_item			min;
+	t_stack_list	*l;
 
-# include "libft.h"
-# include "struct.h"
-# include "helpers.h"
-# include "ops.h"
-# include "sort.h"
-# include "validate.h"
+	min = s->max;
+	l = s->list;
+	while (l)
+	{
+		if (l->item.value < min.value && l->item.value > val)
+			min = l->item;
+		l = l->next;
+	}
+	return(min);
+}
 
-# define ASC 0x01
-# define DESC 0x02
-
-# define LABEL_MIN_LEN 2
-# define LABEL_MAX_LEN 3
-
-#endif

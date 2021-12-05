@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   peek.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 19:09:24 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/01 19:11:23 by humanfou         ###   ########.fr       */
+/*   Created: 2021/06/07 00:57:50 by humanfou          #+#    #+#             */
+/*   Updated: 2021/06/07 00:57:51 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "helpers.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <limits.h>
+t_item	peek(t_stack *stack)
+{
+	t_item	item;
 
-# include "libft.h"
-# include "struct.h"
-# include "helpers.h"
-# include "ops.h"
-# include "sort.h"
-# include "validate.h"
-
-# define ASC 0x01
-# define DESC 0x02
-
-# define LABEL_MIN_LEN 2
-# define LABEL_MAX_LEN 3
-
-#endif
+	item.index = INT_MIN;
+	item.value = INT_MIN;
+	if (!is_empty(stack))
+		item = stack->list->item;
+	return (item);
+}

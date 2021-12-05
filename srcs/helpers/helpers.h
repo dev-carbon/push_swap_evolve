@@ -26,7 +26,12 @@ void	display_result(t_stack *a, t_stack *b);
 void	display_stack(t_stack *stack);
 void	display_stacks(t_stack *a, t_stack *b);
 
+int		is_empty(t_stack *stack);
+int		is_sorted(t_stack *stack, int order);
+
+t_item	peek(t_stack *stack);
+
+t_stack	*new_stack(void);
 t_stack	*parse(char **argv, t_stack *stack);
-t_stack	*refresh_stack(t_stack *stack);
 
 #endif

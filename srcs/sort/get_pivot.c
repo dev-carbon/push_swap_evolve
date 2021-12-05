@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   get_pivot.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 13:36:03 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/07 13:36:05 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/05 21:11:14 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/05 21:11:16 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "sort.h"
 
-t_stack	*push(t_stack *stack, int nbr)
+int	get_pivot(t_stack *a, t_stack *b)
 {
-	t_stack_list	*new;
-	t_stack_list	*head;
+	int				tmp;
+	int				pivot;
+	t_stack_list	*l;
 
-	head = stack->list;
-	new = (t_stack_list *)malloc(sizeof(t_stack_list));
-	if (new == NULL)
-		escape(EXIT_FAILURE);
-	stack->size += 1;
-	new->item.value = nbr;
-	new->item.index = 0;
-	new->next = head;
-	stack->list = new;
-	return (stack);
+	tmp = (a->min.value + a->max.value) / 2;
+	pivot = INT_MIN;
+	l = a->list;
+	while (l != NULL)
+	{
+		if (pivot <= l->item.value && l->item.value <= tmp)
+			pivot = l->item.value;
+		l = l->next;
+	}
+	return (pivot);
 }

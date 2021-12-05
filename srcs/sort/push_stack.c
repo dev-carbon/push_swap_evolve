@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_empty.c                                         :+:      :+:    :+:   */
+/*   push_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 01:04:58 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/07 01:05:02 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/05 20:57:43 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/05 20:57:47 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "sort.h"
 
-int	is_empty(t_stack *stack)
+int	push_stack(t_stack *dest, t_stack *src, char *label)
 {
-	if (stack->size == 0)
-		return (1);
-	return (0);
+	push(dest, src->top.value);
+	refresh_stack(dest);
+	pop(src);
+	refresh_stack(src);
+	write(STDOUT_FILENO, label, ft_strlen(label));
+	return (1);
 }

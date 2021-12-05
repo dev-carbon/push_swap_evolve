@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   is_empty.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 19:09:24 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/01 19:11:23 by humanfou         ###   ########.fr       */
+/*   Created: 2021/06/07 01:04:58 by humanfou          #+#    #+#             */
+/*   Updated: 2021/06/07 01:05:02 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "helpers.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <limits.h>
-
-# include "libft.h"
-# include "struct.h"
-# include "helpers.h"
-# include "ops.h"
-# include "sort.h"
-# include "validate.h"
-
-# define ASC 0x01
-# define DESC 0x02
-
-# define LABEL_MIN_LEN 2
-# define LABEL_MAX_LEN 3
-
-#endif
+int	is_empty(t_stack *stack)
+{
+	if (stack->size == 0)
+		return (1);
+	return (0);
+}

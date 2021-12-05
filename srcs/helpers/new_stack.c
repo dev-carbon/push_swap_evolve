@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   new_stack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 19:09:24 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/01 19:11:23 by humanfou         ###   ########.fr       */
+/*   Created: 2021/06/01 16:59:03 by humanfou          #+#    #+#             */
+/*   Updated: 2021/06/09 17:08:51 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "helpers.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <limits.h>
+t_stack	*new_stack(void)
+{
+	t_stack	*stack;
 
-# include "libft.h"
-# include "struct.h"
-# include "helpers.h"
-# include "ops.h"
-# include "sort.h"
-# include "validate.h"
-
-# define ASC 0x01
-# define DESC 0x02
-
-# define LABEL_MIN_LEN 2
-# define LABEL_MAX_LEN 3
-
-#endif
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	stack->size = 0;
+	stack->list = NULL;
+	return (stack);
+}

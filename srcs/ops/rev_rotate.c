@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 19:09:24 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/01 19:11:23 by humanfou         ###   ########.fr       */
+/*   Created: 2021/06/07 13:36:31 by humanfou          #+#    #+#             */
+/*   Updated: 2021/06/07 13:36:33 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "ops.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <limits.h>
+t_stack	*rev_rotate(t_stack *stack)
+{
+	t_stack_list	*head;
+	t_stack_list	*next;
 
-# include "libft.h"
-# include "struct.h"
-# include "helpers.h"
-# include "ops.h"
-# include "sort.h"
-# include "validate.h"
-
-# define ASC 0x01
-# define DESC 0x02
-
-# define LABEL_MIN_LEN 2
-# define LABEL_MAX_LEN 3
-
-#endif
+	head = stack->list;
+	if (head != NULL)
+	{
+		next = head->next;
+		while (next)
+		{
+			ft_swap(&head->item.value, &next->item.value);
+			next = next->next;
+		}
+	}
+	return (stack);
+}

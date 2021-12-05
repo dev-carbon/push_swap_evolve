@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libs.h                                             :+:      :+:    :+:   */
+/*   create_partition.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 19:09:24 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/01 19:11:23 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/05 21:14:59 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/05 21:15:33 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "sort.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <limits.h>
+void	create_partition(t_stack *a, t_stack *b, int *hits)
+{
+	int		pivot;
 
-# include "libft.h"
-# include "struct.h"
-# include "helpers.h"
-# include "ops.h"
-# include "sort.h"
-# include "validate.h"
+	pivot = get_pivot(a, b);
+	while (!is_sorted(a, ASC) && a->size != 3)
+	{
+		if (a->top.value < pivot)
+			*hits += push_stack(b, a, "pb\n");
+		else
+			*hits += rotate_stack(a, "ra\n");
+		if (pivot == a->min.value)
+			pivot = get_pivot(a, b);
+	}
+}
 
-# define ASC 0x01
-# define DESC 0x02
-
-# define LABEL_MIN_LEN 2
-# define LABEL_MAX_LEN 3
-
-#endif

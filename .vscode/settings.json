@@ -3,7 +3,7 @@
 		"helpers.h": "c",
 		"push_swap.h": "c",
 		"validate.h": "c",
-		"stack.h": "c",
+		"ops.h": "c",
 		"libft.h": "c",
 		"ops.h": "c"
 	}

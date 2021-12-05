@@ -30,21 +30,16 @@ SANITIZER = -fsanitize=address  -g
 
 INC = -I./includes/ \
 	-I./libft/ \
-	-I./srcs/ops/ \
 	-I./srcs/stack/ \
 	-I./srcs/helpers/ \
+	-I./srcs/ops/ \
+	-I./srcs/sort/ \
 	-I./srcs/validate/ \
 
-COMMON_SRCS = srcs/stack/is_empty.c \
-	srcs/stack/is_sorted.c \
-	srcs/stack/new_stack.c \
-	srcs/stack/peek.c \
-	srcs/stack/pop.c \
-	srcs/stack/push.c \
-	srcs/stack/rev_rotate.c \
-	srcs/stack/rotate.c \
-	srcs/stack/sort.c \
-	srcs/stack/swap.c \
+COMMON_SRCS = srcs/helpers/is_empty.c \
+	srcs/helpers/is_sorted.c \
+	srcs/helpers/new_stack.c \
+	srcs/helpers/peek.c \
 	srcs/helpers/destroy_list.c \
 	srcs/helpers/destroy_ops.c \
 	srcs/helpers/destroy_split.c \
@@ -52,11 +47,29 @@ COMMON_SRCS = srcs/stack/is_empty.c \
 	srcs/helpers/escape.c \
 	srcs/helpers/execute.c \
 	srcs/helpers/parse.c \
-	srcs/helpers/refresh_stack.c \
 	srcs/helpers/display_debug_data.c \
 	srcs/helpers/display_result.c \
 	srcs/helpers/display_stack.c \
 	srcs/helpers/display_stacks.c \
+	srcs/ops/pop.c \
+	srcs/ops/push.c \
+	srcs/ops/rev_rotate.c \
+	srcs/ops/rotate.c \
+	srcs/ops/swap.c \
+	srcs/sort/create_partition.c \
+	srcs/sort/do_intermediate_push.c \
+	srcs/sort/get_max_bottom_sibbling.c \
+	srcs/sort/get_min_bottom_sibbling.c \
+	srcs/sort/get_pivot.c \
+	srcs/sort/push_stack.c \
+	srcs/sort/refresh_stack.c \
+	srcs/sort/rev_rotate_stack.c \
+	srcs/sort/rev_rotate_stacks.c \
+	srcs/sort/rotate_min.c \
+	srcs/sort/rotate_stack.c \
+	srcs/sort/rotate_stacks.c \
+	srcs/sort/sort.c \
+	srcs/sort/swap_stack.c \
 	srcs/validate/is_valid_int.c \
 
 COMMON_OBJS = $(COMMON_SRCS:.c=.o)

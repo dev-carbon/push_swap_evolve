@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   peek.c                                             :+:      :+:    :+:   */
+/*   rev_rotate_stack.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/07 00:57:50 by humanfou          #+#    #+#             */
-/*   Updated: 2021/06/07 00:57:51 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/05 21:09:55 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/05 21:10:22 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "sort.h"
 
-t_item	peek(t_stack *stack)
+int	rev_rotate_stack(t_stack *stack, char *label)
 {
-	t_item	item;
-
-	item.index = INT_MIN;
-	item.value = INT_MIN;
-	if (!is_empty(stack))
-		item = stack->list->item;
-	return (item);
+	rev_rotate(stack);
+	refresh_stack(stack);
+	write(STDOUT_FILENO, label, ft_strlen(label));
+	return (1);
 }
+
