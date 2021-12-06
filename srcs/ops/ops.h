@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#ifndef OPS_H
+# define OPS_H
 
 # include "push_swap.h"
 

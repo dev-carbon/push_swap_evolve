@@ -16,16 +16,13 @@ int	do_intermediate_push(t_stack *a, t_stack *b, int *hits, char *label)
 {
 	if (a->top.value > b->top.value && is_sorted(a, ASC))
 	{
-		*hits += push_stack(a, b, "alt pa 1\n");
-		display_stacks(a, b);
+		*hits += push_stack(a, b, label);
 		return (1);
 	}
 	else if (a->top.value > b->top.value && b->top.value > a->last.value)
 	{
-		*hits += push_stack(a, b, "alt pa 2\n");
-		display_stacks(a, b);
-		return(1);
+		*hits += push_stack(a, b, label);
+		return (1);
 	}
 	return (0);
 }
-

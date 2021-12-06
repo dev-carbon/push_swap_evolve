@@ -25,6 +25,5 @@ t_item	get_min_bottom_sibbling(t_stack *s, int val)
 			min = l->item;
 		l = l->next;
 	}
-	return(min);
+	return (min);
 }
-

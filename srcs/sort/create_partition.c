@@ -20,11 +20,11 @@ void	create_partition(t_stack *a, t_stack *b, int *hits)
 	while (!is_sorted(a, ASC) && a->size != 3)
 	{
 		if (a->top.value < pivot)
-			*hits += push_stack(b, a, "pb\n");
+			*hits += push_stack(b, a, PUSH_B);
 		else
-			*hits += rotate_stack(a, "ra\n");
-		if (pivot == a->min.value)
-			pivot = get_pivot(a, b);
+			*hits += rotate_stack(a, ROTATE_A);
+		pivot = get_pivot(a, b);
 	}
+	if (a->size == 3)
+		sort_xs(a, hits);
 }
-

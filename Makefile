@@ -26,7 +26,7 @@ CFLAG = -Wall -Wextra -Werror
 
 LIB = -Llibft -lft
 
-SANITIZER = -fsanitize=address  -g
+# SANITIZER = -fsanitize=address  -g
 
 INC = -I./includes/ \
 	-I./libft/ \
@@ -56,18 +56,26 @@ COMMON_SRCS = srcs/helpers/is_empty.c \
 	srcs/ops/rev_rotate.c \
 	srcs/ops/rotate.c \
 	srcs/ops/swap.c \
+	srcs/sort/bring_min_up.c \
 	srcs/sort/create_partition.c \
 	srcs/sort/do_intermediate_push.c \
 	srcs/sort/get_max_bottom_sibbling.c \
 	srcs/sort/get_min_bottom_sibbling.c \
 	srcs/sort/get_pivot.c \
+	srcs/sort/is_rotate_min.c \
 	srcs/sort/push_stack.c \
 	srcs/sort/refresh_stack.c \
+	srcs/sort/rev_rotate_min.c \
+	srcs/sort/rev_rotate_max.c \
 	srcs/sort/rev_rotate_stack.c \
 	srcs/sort/rev_rotate_stacks.c \
 	srcs/sort/rotate_min.c \
+	srcs/sort/rotate_max.c \
 	srcs/sort/rotate_stack.c \
 	srcs/sort/rotate_stacks.c \
+	srcs/sort/sort_xs.c \
+	srcs/sort/sort_sm.c \
+	srcs/sort/sort_md.c \
 	srcs/sort/sort.c \
 	srcs/sort/swap_stack.c \
 	srcs/validate/is_valid_int.c \

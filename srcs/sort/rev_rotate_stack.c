@@ -19,4 +19,3 @@ int	rev_rotate_stack(t_stack *stack, char *label)
 	write(STDOUT_FILENO, label, ft_strlen(label));
 	return (1);
 }
-

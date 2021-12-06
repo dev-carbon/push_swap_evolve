@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_max_bottom_sibbling.c                          :+:      :+:    :+:   */
+/*   sort_xs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 21:14:24 by humanfou          #+#    #+#             */
-/*   Updated: 2021/12/05 21:14:45 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/06 01:57:10 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/06 01:57:11 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
-t_item	get_max_bottom_sibling(t_stack *s, int val)
+t_stack	*sort_xs(t_stack *a, int *hits)
 {
-	int				n;
-	t_item			max;
-	t_stack_list	*l;
-
-	max = s->max;
-	l = s->list;
-	while (l)
+	while (!is_sorted(a, ASC))
 	{
-		if (l->item.value > val)
-			if (max.value > l->item.value)
-				max = l->item;
-		l = l->next;
+		if (a->top.value == a->max.value)
+			*hits += rotate_stack(a, REV_ROTATE_A);
+		else if (a->top.value > a->next.value)
+			*hits += swap_stack(a, SWAP_A);
+		else
+			*hits += rev_rotate_stack(a, REV_ROTATE_A);
 	}
-	return (max);
+	return (a);
 }
