@@ -14,7 +14,6 @@
 
 void	bring_item_up(t_stack *stack, int *hits, t_item item)
 {
-	printf("item: %d\n", item.value);
 	if (item.index > stack->size / 2)
 		while (stack->top.value != item.value)
 			*hits += rev_rotate_stack(stack, REV_ROTATE_A);
