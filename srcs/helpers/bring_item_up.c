@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   bring_item_up.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 22:48:38 by humanfou          #+#    #+#             */
-/*   Updated: 2021/11/04 15:15:06 by humanfou         ###   ########.fr       */
+/*   Created: 2021/12/08 15:28:13 by humanfou          #+#    #+#             */
+/*   Updated: 2021/12/08 15:31:59 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "helpers.h"
 
-int	main(int ac, char **av)
+void	bring_item_up(t_stack *stack, int *hits, t_item item)
 {
-	int	len;
-
-	if (ac == 2)
-	{
-		len = ft_strlen(av[1]);
-		write(1, av[1], len);
-	}
-	return (0);
+	printf("item: %d\n", item.value);
+	if (item.index > stack->size / 2)
+		while (stack->top.value != item.value)
+			*hits += rev_rotate_stack(stack, REV_ROTATE_A);
+	else
+		while (stack->top.value != item.value)
+			*hits += rotate_stack(stack, ROTATE_A);
 }

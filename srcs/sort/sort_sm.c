@@ -24,7 +24,8 @@ t_stack	*sort_sm(t_stack *a, t_stack *b, int *hits)
 		else
 			while (a->top.value != a->min.value)
 				*hits += rev_rotate_stack(a, REV_ROTATE_A);
-		*hits += push_stack(b, a, PUSH_B);
+		if (!is_sorted(a, ASC))
+			*hits += push_stack(b, a, PUSH_B);
 	}
 	sort_xs(a, hits);
 	while (!is_empty(b))

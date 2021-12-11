@@ -30,10 +30,6 @@ int	main(int argc, char **argv)
 			refresh_stack(b);
 			sort(a, b, &hits);
 		}
-		display_result(a, b);
-		write(STDOUT_FILENO, "Total hits: ", 12);
-		ft_putnbr(hits);
-		write(STDOUT_FILENO, "\n", 1);
 		destroy_stack(a);
 		destroy_stack(b);
 	}

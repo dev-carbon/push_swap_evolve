@@ -14,12 +14,12 @@
 
 int	get_pivot(t_stack *a, t_stack *b)
 {
-	int				tmp;
 	int				pivot;
+	long int		tmp;
 	t_stack_list	*l;
 
-	tmp = (a->min.value + a->max.value) / 2;
-	pivot = INT_MIN;
+	tmp = (a->min.value / 2) + (a->max.value / 2);
+	pivot = tmp;
 	l = a->list;
 	while (l != NULL)
 	{

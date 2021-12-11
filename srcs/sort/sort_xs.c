@@ -17,7 +17,7 @@ t_stack	*sort_xs(t_stack *a, int *hits)
 	while (!is_sorted(a, ASC))
 	{
 		if (a->top.value == a->max.value)
-			*hits += rotate_stack(a, REV_ROTATE_A);
+			*hits += rotate_stack(a, ROTATE_A);
 		else if (a->top.value > a->next.value)
 			*hits += swap_stack(a, SWAP_A);
 		else

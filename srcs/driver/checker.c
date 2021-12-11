@@ -57,18 +57,14 @@ static int	checker(t_stack *a)
 	count = 0;
 	ops = NULL;
 	b = new_stack();
-	display_stacks(a, b);
-	ft_putstr("\n\33[4mExec\33[0m: ");
 	while (get_next_line(STDIN_FILENO, &label) && is_valid_operation(label))
 	{
 		ops = store_ops(&ops, label);
 		free(label);
-		do_ops(a, b, ops);
-		destroy_ops(&ops);
-		display_debug_data(a, b, ++count);
 	}
 	free(label);
-	display_stacks(a, b);
+	do_ops(a, b, ops);
+	destroy_ops(&ops);
 	display_result(a, b);
 	destroy_stack(b);
 	return (0);

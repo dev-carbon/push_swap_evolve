@@ -16,8 +16,8 @@ t_item	peek(t_stack *stack)
 {
 	t_item	item;
 
-	item.index = INT_MIN;
-	item.value = INT_MIN;
+		item.index = -1;
+		item.value = INT_MIN;
 	if (!is_empty(stack))
 		item = stack->list->item;
 	return (item);
