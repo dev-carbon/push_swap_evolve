@@ -17,6 +17,7 @@ t_stack	*swap(t_stack *stack)
 	t_stack_list	*list;
 
 	list = stack->list;
-	ft_swap(&list->item.value, &list->next->item.value);
+	if (stack->size > 1)
+		ft_swap(&list->item.value, &list->next->item.value);
 	return (stack);
 }

@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		a = new_stack();
 		b = new_stack();
 		parse(argv + 1, a);
-		if (!is_sorted(a, ASC))
+		if (!is_empty(a) && !is_sorted(a, ASC))
 		{
 			refresh_stack(a);
 			refresh_stack(b);

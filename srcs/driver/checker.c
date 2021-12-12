@@ -78,7 +78,8 @@ int	main(int argc, char **argv)
 	{
 		stack = new_stack();
 		parse(argv + 1, stack);
-		checker(stack);
+		if (!is_empty(stack))
+			checker(stack);
 		destroy_stack(stack);
 	}
 	return (0);

@@ -26,7 +26,7 @@ CFLAG = -Wall -Wextra -Werror
 
 LIB = -Llibft -lft
 
-SANITIZER = -fsanitize=address  -g
+SANITIZER = -fsanitize=address -g
 
 INC = -I./includes/ \
 	-I./libft/ \

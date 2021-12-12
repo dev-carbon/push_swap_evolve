@@ -26,8 +26,8 @@ void	rev_rotate_max(t_stack *a, t_stack *b, int *hits, t_item bs)
 	else
 		while (bs.value != a->top.value)
 			if (!do_intermediate_push(a, b, hits, "pa\n"))
-			*hits += rotate_stack(a, "ra\n");
+				*hits += rotate_stack(a, "ra\n");
 	while (b->max.index != 0)
 		if (!do_intermediate_push(a, b, hits, "pa\n"))
-		*hits += rev_rotate_stack(b, "rrb\n");
+			*hits += rev_rotate_stack(b, "rrb\n");
 }
